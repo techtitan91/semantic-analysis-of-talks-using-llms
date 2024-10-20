@@ -8,11 +8,23 @@ from typing import List, Dict, Any
 from dotenv import load_dotenv
 load_dotenv()
 
+from fastapi.middleware.cors import CORSMiddleware
 
 app = FastAPI()
 
-# OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
-OPENROUTER_API_KEY="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"
+
+
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # Allows all origins
+    allow_credentials=True,
+    allow_methods=["*"],  # Allows all methods
+    allow_headers=["*"],  # Allows all headers
+)
+
+
+OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
+# OPENROUTER_API_KEY="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"
 
 class IdeaModel(BaseModel):
     name: str
@@ -114,6 +126,6 @@ async def getGrantInfo(request: ChatRequest):
 
 
 
-if __name__ == "__main__":
-    import uvicorn
-    uvicorn.run(app, host="0.0.0.0", port=8000)
+# if __name__ == "__main__":
+#     import uvicorn
+#     uvicorn.run(app, host="0.0.0.0", port=8000)
