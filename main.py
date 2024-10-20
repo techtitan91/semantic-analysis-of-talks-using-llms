@@ -219,3 +219,34 @@ Use a conversational yet professional tone, incorporate storytelling elements, a
         raise HTTPException(status_code=500, detail=f"Error calling OpenRouter API: {str(e)}")
 
 
+@app.post("/business-plan-roadmap")
+async def getPlanning(request: ChatRequest):
+    try:
+        request_json = request.json()
+        response = requests.post(
+            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateConten?key=" + GEMINI_API_KEY,
+            headers={
+                "Content-Type": "application/json",
+            },
+            json={
+                "system_instruction": {
+                    "parts": {
+                        "text": "You are Neko the cat respond like one"
+                    },
+                    "contents": {
+                        "parts": {
+                            "text": {
+                                "Good morning how are you"
+                            }
+                        }
+                    }
+                }
+            }
+        )
+
+        response.raise_for_status()
+        result = response.json()
+        return response
+    
+    except requests.RequestException as e:
+        raise HTTPException(status_code=500, detail=f"Error calling Gemini API: {str(e)}")
