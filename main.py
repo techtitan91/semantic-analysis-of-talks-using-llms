@@ -274,3 +274,19 @@ async def getPlanning(request: ChatRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"Roadmap generation error: {str(e)}")
     # *** New Additions End Here ***
+
+
+# *** New Additions Start Here ***
+
+# Added: Function to perform DuckDuckGo search
+def ddg_search(query: str, max_results: int = 3) -> list:
+    """Performs DuckDuckGo search and returns results"""
+    try:
+        with DDGS() as ddgs:
+            results = list(ddgs.text(query, max_results=max_results))
+            return results
+    except Exception as e:
+        print(f"DuckDuckGo search error: {e}")
+        return []
+
+# *** New Additions End Here ***
