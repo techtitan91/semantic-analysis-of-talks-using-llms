@@ -59,6 +59,7 @@ async def getPlanning(request: ChatRequest):
 
         response.raise_for_status()
         result = response.json()
+        return response
     
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error calling Gemini API: {str(e)}")
