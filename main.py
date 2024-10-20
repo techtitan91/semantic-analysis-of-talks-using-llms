@@ -13,6 +13,8 @@ load_dotenv()
 
 from fastapi.middleware.cors import CORSMiddleware
 
+from biz_roadmap_generation.gemini_roadmap import gemini_roadmap
+
 app = FastAPI()
 
 
@@ -221,36 +223,7 @@ Use a conversational yet professional tone, incorporate storytelling elements, a
 
 
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
-@app.post("/business-plan-roadmap")
+@app.post("/business_plan_roadmap")
 async def getPlanning(request: ChatRequest):
-    try:
-        request_json = request.json()
-        response = requests.post(
-            # url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent?key=" + GEMINI_API_KEY,
-            url = "https://generativelanguage.googleapis.com/v1beta/models/gemini-1.5-flash:generateContent",
-            headers={
-                "Content-Type": "application/json",
-                "Authorization": f"Bearer {OPENROUTER_API_KEY}",
-            },
-            json={
-                "system_instruction": {
-                    "parts": {
-                        "text": "You are Neko the cat respond like one"
-                    },
-                    "contents": {
-                        "parts": {
-                            "text": {
-                                "Good morning how are you"
-                            }
-                        }
-                    }
-                }
-            }
-        )
-
-        response.raise_for_status()
-        result = response.json()
-        return response
-    
-    except requests.RequestException as e:
-        raise HTTPException(status_code=500, detail=f"Error calling Gemini API: {str(e)}")
+    response = gemini_roadmap()
+    return response
