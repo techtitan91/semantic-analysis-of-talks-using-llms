@@ -1,4 +1,6 @@
-from fastapi import FastAPI, HTTPException
+# File: main.py
+
+from fastapi import FastAPI, HTTPException  # Original line
 from pydantic import BaseModel
 import requests
 import json
@@ -17,8 +19,6 @@ from biz_roadmap_generation.gemini_roadmap import gemini_roadmap
 
 app = FastAPI()
 
-
-
 app.add_middleware(
     CORSMiddleware,
     allow_origins=["*"],  # Allows all origins
@@ -33,6 +33,9 @@ from io import BytesIO
 from fastapi import FastAPI, HTTPException, Response
 import requests
 
+# *** Modified Import Statement ***
+from duckduckgo_search import DDGS  # Updated import for compatibility
+
 def text_to_pdf(text):
     buffer = BytesIO()
     doc = SimpleDocTemplate(buffer, pagesize=letter)
@@ -46,8 +49,6 @@ def text_to_pdf(text):
     doc.build(flowables)
     buffer.seek(0)
     return buffer.getvalue()
-
-
 
 
 OPENROUTER_API_KEY = os.getenv("OPENROUTER_API_KEY")
@@ -67,6 +68,22 @@ class ChatRequest(BaseModel):
 
 # class ChatRequest(BaseModel):
 #     message: str
+
+# *** New Additions Start Here ***
+
+# Added: Function to integrate DuckDuckGo search and format citations
+def integrate_duckduckgo(query: str, max_results: int = 3) -> str:
+    """Fetches DuckDuckGo search results and formats them as citations."""
+    try:
+        results = duckduckgo_search(query, max_results=max_results)
+        if not results:
+            return "\n\nCitations: No relevant citations found."
+        citations = "\n".join([f"[{i+1}] {res['title']}: {res['link']}" for i, res in enumerate(results)])
+        return f"\n\nCitations:\n{citations}"
+    except Exception as e:
+        return f"\n\nCitations: DuckDuckGo search error: {str(e)}"
+
+# *** New Additions End Here ***
 
 
 @app.post("/investors")
@@ -102,13 +119,19 @@ async def getInvestors(request: ChatRequest):
         result = response.json()
         
         if "choices" in result and len(result["choices"]) > 0:
-            return response.json()["choices"][0]["message"]["content"]
+            main_content = response.json()["choices"][0]["message"]["content"]
         else:
             raise HTTPException(status_code=500, detail="Unexpected response format from OpenRouter API")
-    
+
+        # *** New Additions Start Here ***
+        # Added: Append DuckDuckGo citations
+        query = f"Investors for {request.idea.mission}"
+        citations = integrate_duckduckgo(query)
+        return main_content + citations
+        # *** New Additions End Here ***
+
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error calling OpenRouter API: {str(e)}")
-
 
 
 @app.post("/grantInfo")
@@ -144,13 +167,19 @@ async def getGrantInfo(request: ChatRequest):
         result = response.json()
         
         if "choices" in result and len(result["choices"]) > 0:
-            return response.json()["choices"][0]["message"]["content"]
+            main_content = response.json()["choices"][0]["message"]["content"]
         else:
             raise HTTPException(status_code=500, detail="Unexpected response format from OpenRouter API")
-    
+
+        # *** New Additions Start Here ***
+        # Added: Append DuckDuckGo citations
+        query = f"Grants for {request.idea.mission}"
+        citations = integrate_duckduckgo(query)
+        return main_content + citations
+        # *** New Additions End Here ***
+
     except requests.RequestException as e:
         raise HTTPException(status_code=500, detail=f"Error calling OpenRouter API: {str(e)}")
-
 
 
 @app.post("/getGrantProposal")
@@ -173,7 +202,7 @@ async def getGrantProposal(request: ChatRequest):
 10. Compelling conclusion that reinforces the urgency and importance of your project
 
 Use a conversational yet professional tone, incorporate storytelling elements, and emphasize the human impact of your work. Provide concrete examples and data to support your claims. Tailor the proposal to align with the goals and values of potential funders."""
-
+    
         response = requests.post(
             url="https://openrouter.ai/api/v1/chat/completions",
             headers={
@@ -200,18 +229,25 @@ Use a conversational yet professional tone, incorporate storytelling elements, a
         if "choices" in result and len(result["choices"]) > 0:
             propContent = response.json()["choices"][0]["message"]["content"]
 
-            pdf_bytes = text_to_pdf(propContent)
+            # *** New Additions Start Here ***
+            # Added: Append DuckDuckGo citations
+            query = f"Grant proposal examples for {request.idea.mission}"
+            citations = integrate_duckduckgo(query)
+            combined_content = propContent + citations
+            # *** New Additions End Here ***
+
+            pdf_bytes = text_to_pdf(combined_content)
             # Return the PDF as a downloadable file
             return Response(
                 content=pdf_bytes,
                 media_type="application/pdf",
                 headers={"Content-Disposition": "attachment; filename=grant_proposal.pdf"}
             )
-                # return FileResponse(
-                #     pdf_buffer,
-                #     media_type="application/pdf",
-                #     headers={"Content-Disposition": "attachment; filename=grant_proposal.pdf"}
-                # )
+            # return FileResponse(
+            #     pdf_buffer,
+            #     media_type="application/pdf",
+            #     headers={"Content-Disposition": "attachment; filename=grant_proposal.pdf"}
+            # )
 
 
         else:
@@ -221,9 +257,48 @@ Use a conversational yet professional tone, incorporate storytelling elements, a
         raise HTTPException(status_code=500, detail=f"Error calling OpenRouter API: {str(e)}")
 
 
-
 GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
 @app.post("/business_plan_roadmap")
 async def getPlanning(request: ChatRequest):
-    response = gemini_roadmap()
-    return response
+    # *** New Additions Start Here ***
+    # Added: Try-except block and append DuckDuckGo citations
+    try:
+        response_content = gemini_roadmap()
+
+        # Append DuckDuckGo citations
+        query = f"Business plan roadmap for {request.idea.mission}"
+        citations = integrate_duckduckgo(query)
+        combined_response = response_content + citations
+
+        return combined_response
+    except Exception as e:
+        raise HTTPException(status_code=500, detail=f"Roadmap generation error: {str(e)}")
+    # *** New Additions End Here ***
+
+
+# *** New Fixes Start Here ***
+
+# Added: Function to perform DuckDuckGo search
+def ddg_search(query: str, max_results: int = 3) -> list:
+    """Performs DuckDuckGo search and returns results"""
+    try:
+        with DDGS() as ddgs:
+            results = list(ddgs.text(query, max_results=max_results))
+            return results
+    except Exception as e:
+        print(f"DuckDuckGo search error: {e}")
+        return []
+
+# Added: Corrected integrate_duckduckgo function to use 'href' instead of 'link'
+def integrate_duckduckgo(query: str, max_results: int = 3) -> str:
+    """Fetches DuckDuckGo search results and formats them as citations."""
+    try:
+        results = ddg_search(query, max_results=max_results)
+        if not results:
+            return "\n\nCitations: No relevant citations found."
+        citations = "\n".join([f"[{i+1}] {res['title']}: {res['href']}" for i, res in enumerate(results)])
+        return f"\n\nCitations:\n{citations}"
+    except Exception as e:
+        return f"\n\nCitations: DuckDuckGo search error: {str(e)}"
+
+# *** New Fixes End Here ***
