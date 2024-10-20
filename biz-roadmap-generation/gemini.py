@@ -1,4 +1,4 @@
-# followed the Gemini API quickstart tutorial
+# followed the Gemini API quickstart tutorial https://ai.google.dev/gemini-api/docs/quickstart?lang=python
 
 import google.generativeai as genai
 import os
