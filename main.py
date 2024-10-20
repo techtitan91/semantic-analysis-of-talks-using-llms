@@ -276,17 +276,18 @@ async def getPlanning(request: ChatRequest):
     # *** New Additions End Here ***
 
 
-# *** New Additions Start Here ***
+# *** New Fixes Start Here ***
 
-# Added: Function to perform DuckDuckGo search
-def ddg_search(query: str, max_results: int = 3) -> list:
-    """Performs DuckDuckGo search and returns results"""
+# Added: Corrected integrate_duckduckgo function to use 'href' instead of 'link'
+def integrate_duckduckgo(query: str, max_results: int = 3) -> str:
+    """Fetches DuckDuckGo search results and formats them as citations."""
     try:
-        with DDGS() as ddgs:
-            results = list(ddgs.text(query, max_results=max_results))
-            return results
+        results = ddg_search(query, max_results=max_results)
+        if not results:
+            return "\n\nCitations: No relevant citations found."
+        citations = "\n".join([f"[{i+1}] {res['title']}: {res['href']}" for i, res in enumerate(results)])
+        return f"\n\nCitations:\n{citations}"
     except Exception as e:
-        print(f"DuckDuckGo search error: {e}")
-        return []
+        return f"\n\nCitations: DuckDuckGo search error: {str(e)}"
 
-# *** New Additions End Here ***
+# *** New Fixes End Here ***
