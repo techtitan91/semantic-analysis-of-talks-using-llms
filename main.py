@@ -75,7 +75,7 @@ class ChatRequest(BaseModel):
 def integrate_duckduckgo(query: str, max_results: int = 3) -> str:
     """Fetches DuckDuckGo search results and formats them as citations."""
     try:
-        results = ddg_search(query, max_results=max_results)
+        results = duckduckgo_search(query, max_results=max_results)
         if not results:
             return "\n\nCitations: No relevant citations found."
         citations = "\n".join([f"[{i+1}] {res['title']}: {res['link']}" for i, res in enumerate(results)])
@@ -282,7 +282,7 @@ async def getPlanning(request: ChatRequest):
 def integrate_duckduckgo(query: str, max_results: int = 3) -> str:
     """Fetches DuckDuckGo search results and formats them as citations."""
     try:
-        results = ddg_search(query, max_results=max_results)
+        results = duckduckgo_search(query, max_results=max_results)
         if not results:
             return "\n\nCitations: No relevant citations found."
         citations = "\n".join([f"[{i+1}] {res['title']}: {res['href']}" for i, res in enumerate(results)])
