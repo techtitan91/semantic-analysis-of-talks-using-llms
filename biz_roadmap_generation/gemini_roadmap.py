@@ -1,4 +1,5 @@
-# File: bizbot/gemini_roadmap.py
+# File: bizbot/
+.py
 
 import google.generativeai as genai
 import os
@@ -61,3 +62,5 @@ def gemini_roadmap():
     print(combined_response)
     return combined_response  # Ensure that the function returns the combined response
     # *** New Additions End Here ***
+
+gemini_roadmap()
