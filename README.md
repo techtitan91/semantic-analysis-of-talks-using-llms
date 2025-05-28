@@ -1,108 +1,108 @@
-# TEDxSDG: Non-profit Tool Advancing the United Nations Sustainable Development Goals (SDGs)
+# semantic-analysis-of-talks-using-llms
 
-## Summary
+## Overview
 
-TEDxSDG empowers non-profits and individuals to contribute to the UN's Sustainable Development Goals by providing AI-powered tools for inspiration, planning, and funding. It combines ideation, relevance, planning, execution, scalability, and responsible AI practices to offer a comprehensive solution for addressing global challenges.
+This **semantic-analysis-of-talks-using-llms** platform empowers non-profit organizations and individuals to contribute to the UN's Sustainable Development Goals (SDGs) by offering AI-driven tools for inspiration, project planning, and funding acquisition. It merges ideation, relevance assessment, planning, execution, scalability, and responsible AI principles to provide a thorough solution for tackling global challenges.
 
-## 🌟 Key Features
+## 🌟 Core Capabilities
 
-### 1. Inspiration Phase
-- **TEDx Talk Analysis**: Semantic analysis of TEDx talks to extract ideas and actionable insights.
-- **SDG Alignment**: Automatic mapping of ideas to relevant UN Sustainable Development Goals.
+### 1. Inspiration Stage
 
-### 2. Planning Phase
-- **Roadmaps**: Project planning facilitated by examples of successful initiatives.
-- **Resource Planning**: Automated timeline generation based on customizable templates.
+- **Talk Analysis**: Semantic examination of inspirational talks (e.g., TEDx) to derive ideas and actionable takeaways.
+- **SDG Correlation**: Automatic mapping of derived concepts to pertinent UN Sustainable Development Goals.
 
-### 3. Funding Phase
-- **Funding Discovery**: Leveraging LLMs and targeted internet searches to connect projects with potential funding sources.
-- **Simplified Matching**: Streamlining the process of identifying potential grant providers or impact investors tailored to the non-profit’s mission and goals.
+### 2. Planning Stage
 
+- **Development Roadmaps**: Project planning aided by examples of successful past initiatives.
+- **Resource Allocation**: Automated timeline creation based on adaptable templates.
 
-## Addressing Societal Challenges & UN SDG Alignment
+### 3. Funding Stage
 
-TEDxSDG directly addresses global societal challenges by supporting projects aligned with the UN Sustainable Development Goals (SDGs).  AI-powered SDG alignment ensures each project idea targets specific challenges, enhancing community resilience by transforming concepts into actionable development projects.
+- **Funding Source Identification**: Utilizing LLMs and targeted internet searches to link projects with prospective funding avenues.
+- **Simplified Matching Process**: Streamlining the identification of potential grant providers or impact investors aligned with the non-profit’s mission and objectives.
 
-## Innovative Use of AI
+## Tackling Societal Issues & UN SDG Alignment
 
-TEDxSDG leverages AI in innovative ways:
+This system directly confronts global societal issues by championing projects aligned with the UN Sustainable Development Goals (SDGs). AI-enhanced SDG alignment ensures each project concept specifically targets defined challenges, thereby boosting community resilience by transforming ideas into feasible development projects.
 
-- **Semantic Analysis of TEDx Talks**: Extracts key insights and actionable knowledge to inspire and guide project ideation.
-- **Automated SDG Mapping**: Intelligently aligns project ideas with relevant SDGs, increasing efficiency and impact.
-- **AI-Powered Funding Discovery**: Uses LLMs and internet searches to streamline funding identification, connecting projects with potential funders.
+## Innovative AI Utilization
 
-## Technical Execution & Architecture
+This platform leverages AI in novel ways:
 
-- **Next.js & FastAPI Integration**: Ensures seamless front-end and back-end coordination for a robust and responsive user experience.
-- **CDN-Based Architecture**: Enhances performance, reduces operational complexity, and simplifies maintenance.
-- **Modular Design**: Built with modular components for easy scaling, feature enhancement, and adaptability.
+- **Semantic Analysis of Talks**: Extracts crucial insights and actionable knowledge to inspire and direct project conceptualization.
+- **Automated SDG Mapping**: Intelligently aligns project concepts with relevant SDGs, enhancing efficiency and impact.
+- **AI-Driven Funding Identification**: Employs LLMs and internet searches to simplify the funding discovery process, connecting projects with potential financial backers.
 
-## Real-World Impact & Measurable Outcomes
+## Technical Implementation & Architecture
 
-TEDxSDG has the potential to create significant real-world impact by:
+- **Next.js & FastAPI Synergy**: Ensures smooth front-end and back-end coordination for a durable and responsive user experience.
+- **CDN-Based Infrastructure**: Boosts performance, minimizes operational complexity, and simplifies upkeep.
+- **Modular Architecture**: Constructed with modular elements for straightforward scaling, feature additions, and adaptability.
 
-- **Promoting SDG Alignment**: Encourages individuals and organizations to contribute to global challenges by aligning their projects with the SDGs.
-- **Facilitating Funding**: Connects projects with relevant funding sources, increasing the likelihood of implementation and measurable impact on communities.  We aim to facilitate the launch of three TEDAI For Good Hackathon ideas within the first year.
+## Real-World Effect & Quantifiable Results
 
-## Scalability & Global Reach
+This platform has the potential to generate substantial real-world impact by:
 
-- **Serverless Architecture**: Enables efficient scaling to meet global demand and ensures platform stability.
-- **Multilingual Support**: AI-powered NLP facilitates localization, making the tool adaptable to various languages and regions for broader accessibility. (See Responsible AI for details on the localization approach).
+- **Promoting SDG Alignment**: Motivates individuals and organizations to contribute to global challenges by aligning their initiatives with the SDGs.
+- **Facilitating Funding Access**: Connects projects with suitable funding sources, improving the chances of implementation and measurable community impact. We aim to assist in launching three TEDAI For Good Hackathon concepts within the initial year.
 
-## Usability & Accessibility for All
+## Scalability & Worldwide Reach
 
-- **Intuitive Interface**: Designed for ease of use, even for users with limited technical expertise.
-- **Accessibility Features**: Built with accessibility in mind, accommodating users with diverse abilities and ensuring equitable access.
-- **Modular Project Planning Tools**: Simplifies the process of translating ideas into actionable roadmaps, breaking down complex tasks into manageable steps.
+- **Serverless Design**: Permits efficient scaling to satisfy global demand and ensures platform robustness.
+- **Multilingual Capability**: AI-driven NLP facilitates localization, making the tool adaptable to various languages and regions for wider accessibility. (Refer to Responsible AI for specifics on the localization strategy).
 
-## Presentation & Documentation
+## User-Friendliness & Universal Accessibility
 
-- **User-Centric Presentation**: Showcases the end-to-end user journey, from inspiration to funding, highlighting the platform's practical value.
-- **SDG-Aligned Design**: Visually integrates SDG themes to enhance relevance and clarity.
-- **Comprehensive Documentation**: Provides clear and accessible documentation to enable non-profit organizations to understand, replicate, or adapt the tool.
+- **Intuitive User Interface**: Designed for ease of navigation, even for users with limited technical proficiency.
+- **Accessibility Considerations**: Developed with accessibility as a priority, accommodating users with diverse abilities and ensuring fair access.
+- **Modular Project Planning Utilities**: Simplifies the conversion of ideas into actionable plans, breaking down intricate tasks into manageable phases.
 
-## Responsible AI & Ethical Considerations
+## Presentation & Supporting Materials
 
-- **Data Privacy**: Minimizes personal information collection and prioritizes user privacy.
-- **Transparency & Explainability**: Provides transparent and explainable recommendations, with clear source attribution for funding opportunities.
-- **Limitations & Mitigation Strategies**:
-    * **Funding Discovery:** The dynamic nature of grant funding presents challenges. We mitigate this through a curated database, smart filtering with advanced NLP, and human-in-the-loop validation for key projects.
-    * **Localization:** High-quality localization is resource-intensive. Our strategy involves professional translation for core elements, supplemented by community-based translation and prioritized language support based on user demand.  AI-powered translation will be used to create initial drafts and assist the translation process.
-    * **Scalability:** Meeting global demand requires robust infrastructure. We leverage serverless architecture, CDN integration, and continuous performance monitoring and optimization.
-    * **Usability:** Creating intuitive interfaces requires iterative design. We employ user-centered design principles, beta testing, and ongoing user feedback integration.
+- **User-Focused Presentation**: Demonstrates the complete user journey, from inspiration to securing funds, highlighting the platform's practical utility.
+- **SDG-Themed Design**: Visually incorporates SDG motifs to improve relevance and lucidity.
+- **Extensive Documentation**: Offers clear and readily available documentation to enable non-profit organizations to comprehend, replicate, or modify the tool.
 
-## Technical Requirements
+## Responsible AI & Ethical Framework
+
+- **Data Privacy Assurance**: Minimizes collection of personal information and prioritizes user privacy.
+- **Transparency & Interpretability**: Delivers transparent and understandable recommendations, with clear attribution for funding opportunity sources.
+- **Limitations & Mitigation Approaches**:
+  - **Funding Identification:** The fluctuating nature of grant funding poses challenges. We address this through a curated database, intelligent filtering with advanced NLP, and human-in-the-loop verification for key projects.
+  - **Localization:** High-quality localization is resource-intensive. Our approach involves professional translation for core components, augmented by community-sourced translation and prioritized language support based on user demand. AI-powered translation will be used for initial drafts and to assist the translation workflow.
+  - **Scalability:** Meeting global demand necessitates robust infrastructure. We utilize serverless architecture, CDN integration, and ongoing performance monitoring and optimization.
+  - **Usability:** Crafting intuitive interfaces requires iterative design. We adhere to user-centered design principles, conduct beta testing, and continually integrate user feedback.
+
+## Technical Stack Requirements
 
 - Next.js (JavaScript front-end framework)
 - FastAPI (Python back-end framework)
 
-# TEDxSDG Search Backend
+# Talks Semantic Search Backend
 
-A semantic search engine that connects TEDx Talks with UN Sustainable Development Goals (SDGs).
+A semantic search engine designed to connect inspirational talks (e.g., TEDx Talks) with UN Sustainable Development Goals (SDGs).
 
 ## Overview
 
-The **tedxsdg-search-backend** implements semantic search to find relevant TEDx talks (a publicly available dataset) based on SDG-related queries. The system analyzes talk transcripts and descriptions to match them with SDG themes and user queries.
+The **semantic-talks-search-backend** component implements semantic search to locate relevant talks (from a publicly available dataset) based on queries related to SDGs. The system analyzes talk transcripts and descriptions to match them with SDG themes and user inquiries.
 
-## Technical Implementation
+## Technical Implementation Details
 
-The search engine utilizes several key technologies:
+The search engine employs several key technologies:
 
-* **TF-IDF** (Term Frequency-Inverse Document Frequency)
-  * Converts text data into numerical vectors representing word relevance
-  * Enables efficient text comparison and matching
+- **TF-IDF** (Term Frequency-Inverse Document Frequency)
 
-* **Cosine Similarity**
-  * Measures similarity between query and document vectors
-  * Ranks results based on relevance scores
+  - Converts textual data into numerical vectors that represent word importance.
+  - Facilitates efficient text comparison and matching.
 
-* **scikit-learn's TfidfVectorizer**
-  * Creates sparse TF-IDF matrix from transcripts and descriptions
-  * Optimizes memory usage and computation speed
+- **Cosine Similarity**
 
-## API Usage
+  - Measures the similarity score between query vectors and document vectors.
+  - Ranks search results based on these relevance scores.
 
-API documentation is available at: [https://tedxsdg-search-backend.vercel.app/api/search/redoc](https://tedxsdg-search-backend.vercel.app/api/search/redoc)
+- **scikit-learn's TfidfVectorizer**
+  - Generates a sparse TF-IDF matrix from talk transcripts and descriptions.
+  - Optimizes memory utilization and computational speed.
 
 ### Example Query
 
@@ -124,9 +124,7 @@ GET https://tedxsdg-search-backend.vercel.app/api/search?query=sdg7
         "description": "Buildings are bad news for the climate -- but they don't have to be…",
         "presenterDisplayName": "Ksenia Petrichenko",
         "transcript": "… Buildings that can consume and produce energy efficiently, interact with a smart grid and respond to its signals, providing flexibility and bringing us closer to our climate targets… ",
-        "sdg_tags": [
-          "sdg7"
-        ]
+        "sdg_tags": ["sdg7"]
       }
     }
   ]
@@ -135,52 +133,46 @@ GET https://tedxsdg-search-backend.vercel.app/api/search?query=sdg7
 
 ### Response Fields
 
-* `score`: Relevance score based on cosine similarity (0-1)
-* `document`: Contains the matched TEDx talk information
-  * `slug`: Unique identifier for the talk
-  * `description`: Summary of the talk
-  * `presenterDisplayName`: Speaker's name
-  * `transcript`: Transcript from the talk
-  * `sdg_tags`: SDG identifier
+- `score`: Relevance score based on cosine similarity (ranges from 0 to 1).
+- `document`: Contains information about the matched talk.
+  - `slug`: A unique identifier for the talk.
+  - `description`: A summary of the talk.
+  - `presenterDisplayName`: The name of the speaker.
+  - `transcript`: The transcript from the talk.
+  - `sdg_tags`: Identifier for the associated SDG.
 
-## Technical Diagram
+## System Architecture Diagram
 
 ```mermaid
 graph LR
     subgraph Client
-        A["User Interface (Next.js)"] --> B["API Requests"]
+        A["User Interface (Next.js)"] --> B["API Calls"]
     end
 
     B --> C["API Gateway (FastAPI)"]
 
     subgraph Server
-        C --> D["TEDxSDG Core Logic (FastAPI)"]
-        D --> E["TEDx Talk Data"]
-        D --> F["SDG Data"]
-        D --> G["Funding Sources Data"]
-        C --> H["TEDxSDG Search Backend (FastAPI)"]
+        C --> D["Core Semantic Analysis Logic (FastAPI)"]
+        D --> E["Talk Data Source"]
+        D --> F["SDG Information"]
+        D --> G["Funding Info Database"]
+        C --> H["Talks Semantic Search Backend (FastAPI)"]
         H --> E
         H --> F
     end
 
-    subgraph AI Components
-        D --> I["Semantic Analysis (LLM)"]
-        D --> J["SDG Alignment (AI)"]
-        D --> K["Funding Discovery (LLM)"]
+    subgraph AI_Modules
+        D --> I["Semantic Analysis Engine (LLM)"]
+        D --> J["SDG Correlation Module (AI)"]
+        D --> K["Funding Discovery AI (LLM)"]
     end
 
-    subgraph Infrastructure
-        Server --> L["CDN"]
-        Server --> M["Serverless Infrastructure"]
+    subgraph Infrastructure_Layer
+        Server --> L["Content Delivery Network (CDN)"]
+        Server --> M["Serverless Compute Infrastructure"]
     end
 
     classDef api stroke:#333,stroke-width:2px;
     class C api
     class H api
 ```
-
-## License
-
-GNU Affero General Public License v3.0 - see LICENSE for details.
-
-Built with ❤️ for the TEDAI For Good Hackathon 2024
